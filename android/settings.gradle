@@ -1,0 +1,3 @@
+rootProject.name = 'RNDraftJs'
+
+include ':app'
