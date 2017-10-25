@@ -36,9 +36,17 @@
 		2DCD954D1E0B4F2C00145EB5 /* RNDraftJsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNDraftJsTests.m */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		9161EFDD1FA06769001E3EE8 /* RNDJBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFDC1FA06769001E3EE8 /* RNDJBaseModel.m */; };
+		9161EFE01FA07F00001E3EE8 /* RNDJContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFDF1FA07F00001E3EE8 /* RNDJContentModel.m */; };
+		9161EFE31FA07F1A001E3EE8 /* RNDJBlockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFE21FA07F1A001E3EE8 /* RNDJBlockModel.m */; };
+		9161EFE61FA07F2F001E3EE8 /* RNDJEntityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFE51FA07F2F001E3EE8 /* RNDJEntityModel.m */; };
+		9161EFE91FA07F4B001E3EE8 /* RNDJEntityRangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFE81FA07F4B001E3EE8 /* RNDJEntityRangeModel.m */; };
+		9161EFEC1FA07F62001E3EE8 /* RNDJInlineStyleRangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFEB1FA07F61001E3EE8 /* RNDJInlineStyleRangeModel.m */; };
 		91CBEBB81F9DE2B60038C517 /* RNTDraftJSEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBEBB31F9DE1FD0038C517 /* RNTDraftJSEditor.m */; };
 		91CBEBB91F9DE2BA0038C517 /* RNTDraftJSEditorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBEBB61F9DE1FD0038C517 /* RNTDraftJSEditorManager.m */; };
 		91CBEBBA1F9DE2BE0038C517 /* RNTShadowDraftJSEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBEBB21F9DE1FD0038C517 /* RNTShadowDraftJSEditor.m */; };
+		91F72F421F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F72F411F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.m */; };
+		B695FC26D6898C2FF5234C00 /* libPods-RNDraftJs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 563F3EB3377144FE320C0B88 /* libPods-RNDraftJs.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,17 +261,34 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNDraftJs/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = RNDraftJs/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		1F675BF69C4E26A6A6586B7F /* Pods-RNDraftJs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDraftJs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNDraftJs/Pods-RNDraftJs.debug.xcconfig"; sourceTree = "<group>"; };
+		26833DC63620B57156D6DDFA /* Pods-RNDraftJs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNDraftJs.release.xcconfig"; path = "Pods/Target Support Files/Pods-RNDraftJs/Pods-RNDraftJs.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* RNDraftJs-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RNDraftJs-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* RNDraftJs-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RNDraftJs-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		563F3EB3377144FE320C0B88 /* libPods-RNDraftJs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNDraftJs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		9161EFDB1FA06769001E3EE8 /* RNDJBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJBaseModel.h; sourceTree = "<group>"; };
+		9161EFDC1FA06769001E3EE8 /* RNDJBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJBaseModel.m; sourceTree = "<group>"; };
+		9161EFDE1FA07F00001E3EE8 /* RNDJContentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJContentModel.h; sourceTree = "<group>"; };
+		9161EFDF1FA07F00001E3EE8 /* RNDJContentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJContentModel.m; sourceTree = "<group>"; };
+		9161EFE11FA07F1A001E3EE8 /* RNDJBlockModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJBlockModel.h; sourceTree = "<group>"; };
+		9161EFE21FA07F1A001E3EE8 /* RNDJBlockModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJBlockModel.m; sourceTree = "<group>"; };
+		9161EFE41FA07F2F001E3EE8 /* RNDJEntityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJEntityModel.h; sourceTree = "<group>"; };
+		9161EFE51FA07F2F001E3EE8 /* RNDJEntityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJEntityModel.m; sourceTree = "<group>"; };
+		9161EFE71FA07F4B001E3EE8 /* RNDJEntityRangeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJEntityRangeModel.h; sourceTree = "<group>"; };
+		9161EFE81FA07F4B001E3EE8 /* RNDJEntityRangeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJEntityRangeModel.m; sourceTree = "<group>"; };
+		9161EFEA1FA07F61001E3EE8 /* RNDJInlineStyleRangeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJInlineStyleRangeModel.h; sourceTree = "<group>"; };
+		9161EFEB1FA07F61001E3EE8 /* RNDJInlineStyleRangeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJInlineStyleRangeModel.m; sourceTree = "<group>"; };
 		91CBEBB21F9DE1FD0038C517 /* RNTShadowDraftJSEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTShadowDraftJSEditor.m; sourceTree = "<group>"; };
 		91CBEBB31F9DE1FD0038C517 /* RNTDraftJSEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTDraftJSEditor.m; sourceTree = "<group>"; };
 		91CBEBB41F9DE1FD0038C517 /* RNTDraftJSEditorManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTDraftJSEditorManager.h; sourceTree = "<group>"; };
 		91CBEBB51F9DE1FD0038C517 /* RNTDraftJSEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTDraftJSEditor.h; sourceTree = "<group>"; };
 		91CBEBB61F9DE1FD0038C517 /* RNTDraftJSEditorManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTDraftJSEditorManager.m; sourceTree = "<group>"; };
 		91CBEBB71F9DE1FD0038C517 /* RNTShadowDraftJSEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTShadowDraftJSEditor.h; sourceTree = "<group>"; };
+		91F72F401F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RCTShadowView+DraftJSDirty.h"; sourceTree = "<group>"; };
+		91F72F411F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RCTShadowView+DraftJSDirty.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +315,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				B695FC26D6898C2FF5234C00 /* libPods-RNDraftJs.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +503,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* RNDraftJsTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				D5E9C8CC58B41B97E3116392 /* Pods */,
+				D59BBF996AC8310BA6119D9E /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -493,17 +521,64 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9161EFC01FA06738001E3EE8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9161EFDA1FA06743001E3EE8 /* Base */,
+				9161EFDE1FA07F00001E3EE8 /* RNDJContentModel.h */,
+				9161EFDF1FA07F00001E3EE8 /* RNDJContentModel.m */,
+				9161EFE11FA07F1A001E3EE8 /* RNDJBlockModel.h */,
+				9161EFE21FA07F1A001E3EE8 /* RNDJBlockModel.m */,
+				9161EFE41FA07F2F001E3EE8 /* RNDJEntityModel.h */,
+				9161EFE51FA07F2F001E3EE8 /* RNDJEntityModel.m */,
+				9161EFE71FA07F4B001E3EE8 /* RNDJEntityRangeModel.h */,
+				9161EFE81FA07F4B001E3EE8 /* RNDJEntityRangeModel.m */,
+				9161EFEA1FA07F61001E3EE8 /* RNDJInlineStyleRangeModel.h */,
+				9161EFEB1FA07F61001E3EE8 /* RNDJInlineStyleRangeModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9161EFDA1FA06743001E3EE8 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				9161EFDB1FA06769001E3EE8 /* RNDJBaseModel.h */,
+				9161EFDC1FA06769001E3EE8 /* RNDJBaseModel.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		91CBEB8F1F9D50D20038C517 /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				9161EFC01FA06738001E3EE8 /* Models */,
 				91CBEBB51F9DE1FD0038C517 /* RNTDraftJSEditor.h */,
 				91CBEBB31F9DE1FD0038C517 /* RNTDraftJSEditor.m */,
 				91CBEBB41F9DE1FD0038C517 /* RNTDraftJSEditorManager.h */,
 				91CBEBB61F9DE1FD0038C517 /* RNTDraftJSEditorManager.m */,
 				91CBEBB71F9DE1FD0038C517 /* RNTShadowDraftJSEditor.h */,
 				91CBEBB21F9DE1FD0038C517 /* RNTShadowDraftJSEditor.m */,
+				91F72F401F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.h */,
+				91F72F411F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.m */,
 			);
 			path = Src;
+			sourceTree = "<group>";
+		};
+		D59BBF996AC8310BA6119D9E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				563F3EB3377144FE320C0B88 /* libPods-RNDraftJs.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5E9C8CC58B41B97E3116392 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F675BF69C4E26A6A6586B7F /* Pods-RNDraftJs.debug.xcconfig */,
+				26833DC63620B57156D6DDFA /* Pods-RNDraftJs.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,10 +606,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "RNDraftJs" */;
 			buildPhases = (
+				3404678F74505DF9B43A8404 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				A9D0147A7652ED0BAD22B4E5 /* [CP] Embed Pods Frameworks */,
+				BB7F883D66186D5AB7E2B8BE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -913,6 +991,51 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
 		};
+		3404678F74505DF9B43A8404 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A9D0147A7652ED0BAD22B4E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RNDraftJs/Pods-RNDraftJs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB7F883D66186D5AB7E2B8BE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RNDraftJs/Pods-RNDraftJs-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -928,11 +1051,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91F72F421F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.m in Sources */,
+				9161EFE31FA07F1A001E3EE8 /* RNDJBlockModel.m in Sources */,
 				91CBEBBA1F9DE2BE0038C517 /* RNTShadowDraftJSEditor.m in Sources */,
 				91CBEBB91F9DE2BA0038C517 /* RNTDraftJSEditorManager.m in Sources */,
+				9161EFE61FA07F2F001E3EE8 /* RNDJEntityModel.m in Sources */,
 				91CBEBB81F9DE2B60038C517 /* RNTDraftJSEditor.m in Sources */,
+				9161EFEC1FA07F62001E3EE8 /* RNDJInlineStyleRangeModel.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				9161EFDD1FA06769001E3EE8 /* RNDJBaseModel.m in Sources */,
+				9161EFE91FA07F4B001E3EE8 /* RNDJEntityRangeModel.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				9161EFE01FA07F00001E3EE8 /* RNDJContentModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,6 +1150,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F675BF69C4E26A6A6586B7F /* Pods-RNDraftJs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1038,6 +1169,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26833DC63620B57156D6DDFA /* Pods-RNDraftJs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;

@@ -1,0 +1,523 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		200EDC252384B42E5B515729B3746523 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 265DDDF4A5C807E517E64492A03D942D /* Foundation.framework */; };
+		257DAEF7C1A64ABA9A88C4384D53EA9E /* LoggerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D25B334299A913D3348C59FE95BE0C /* LoggerClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		47E67CDE27C5DAEA86AB51663A885617 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B53BB9900AAD4C476419FF001C7FB5 /* UIKit.framework */; };
+		489D682497A1DBE9009D567920903314 /* Pods-RNDraftJs-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1D005DC7EA2CFE46928CD71BE816 /* Pods-RNDraftJs-dummy.m */; };
+		4CEA336617D247544A3E341757A06115 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7712B80B3B5BECE1BC4115B192E23ED6 /* SystemConfiguration.framework */; };
+		7CB85BEC2B90BD0B94A243032E8089D6 /* NSLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = FD3A02D9C4A2C29228D10058E1FD1148 /* NSLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8ABF10B9A08B3A523D1EE9B47F83C30B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 265DDDF4A5C807E517E64492A03D942D /* Foundation.framework */; };
+		BD5D05C48518368CD4427430BDC4D045 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93399CF65BA043CFC8B74CB2C6DCF9D5 /* CFNetwork.framework */; };
+		CE2357D63BF64C88EB28856FDED6E3E7 /* LoggerCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 21DE7341778BC18D7B80B2E79FF1AA01 /* LoggerCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1704B134DA4468AA679B18B4E82413E /* LoggerClient.h in Headers */ = {isa = PBXBuildFile; fileRef = A54C9729B2CDF43A5D3CE4544D0758ED /* LoggerClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F121407F558983A9BB76375AED517412 /* NSLogger-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27002D4BCC532180DEB968575EEC0779 /* NSLogger-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F0EDF91D773532BF006927C053BCF4D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47B4F1DBAD6CFB4EADBA32A971427D28;
+			remoteInfo = NSLogger;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D162EBFD95A56D2C7372800F0EF8E5F /* Pods-RNDraftJs-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RNDraftJs-resources.sh"; sourceTree = "<group>"; };
+		17D25B334299A913D3348C59FE95BE0C /* LoggerClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LoggerClient.m; path = Client/iOS/LoggerClient.m; sourceTree = "<group>"; };
+		21DE7341778BC18D7B80B2E79FF1AA01 /* LoggerCommon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LoggerCommon.h; path = Client/iOS/LoggerCommon.h; sourceTree = "<group>"; };
+		265DDDF4A5C807E517E64492A03D942D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		27002D4BCC532180DEB968575EEC0779 /* NSLogger-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSLogger-dummy.m"; sourceTree = "<group>"; };
+		274F96B527E0BA26A2691DF8BAB501BD /* Pods-RNDraftJs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RNDraftJs.debug.xcconfig"; sourceTree = "<group>"; };
+		3DBCD534C674D9476B6709594380848E /* Pods-RNDraftJs-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RNDraftJs-acknowledgements.plist"; sourceTree = "<group>"; };
+		42A4263B7009E0F4019B0DCE68D5113A /* libPods-RNDraftJs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-RNDraftJs.a"; path = "libPods-RNDraftJs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7712B80B3B5BECE1BC4115B192E23ED6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		78F6CAB1C4696A6AAA7C3411A9EA9584 /* Pods-RNDraftJs-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RNDraftJs-acknowledgements.markdown"; sourceTree = "<group>"; };
+		93399CF65BA043CFC8B74CB2C6DCF9D5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A54C9729B2CDF43A5D3CE4544D0758ED /* LoggerClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LoggerClient.h; path = Client/iOS/LoggerClient.h; sourceTree = "<group>"; };
+		AD2A1D005DC7EA2CFE46928CD71BE816 /* Pods-RNDraftJs-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RNDraftJs-dummy.m"; sourceTree = "<group>"; };
+		B9DAC84D67455DA4A2F742C7F1F085E6 /* NSLogger.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NSLogger.xcconfig; sourceTree = "<group>"; };
+		C7B53BB9900AAD4C476419FF001C7FB5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		DD4B53412114DD715112A3C038663747 /* NSLogger-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSLogger-prefix.pch"; sourceTree = "<group>"; };
+		EA813E319D7B45DACEE66B9DBA153DBD /* Pods-RNDraftJs-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RNDraftJs-frameworks.sh"; sourceTree = "<group>"; };
+		ECBD5794A4FC013C7D08C02CDFDFB38E /* Pods-RNDraftJs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RNDraftJs.release.xcconfig"; sourceTree = "<group>"; };
+		FD3A02D9C4A2C29228D10058E1FD1148 /* NSLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSLogger.h; path = Client/iOS/NSLogger.h; sourceTree = "<group>"; };
+		FE26F14F531B515A2F0D6DF55E4345FF /* libNSLogger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libNSLogger.a; path = libNSLogger.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0B2088CF5EC0DA0FA3D834A248B2FC02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD5D05C48518368CD4427430BDC4D045 /* CFNetwork.framework in Frameworks */,
+				8ABF10B9A08B3A523D1EE9B47F83C30B /* Foundation.framework in Frameworks */,
+				4CEA336617D247544A3E341757A06115 /* SystemConfiguration.framework in Frameworks */,
+				47E67CDE27C5DAEA86AB51663A885617 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7357B43B936D977D4A457EE6C58735ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				200EDC252384B42E5B515729B3746523 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A4F3DE7EB2B1913489045A8E2C6EED6 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FD575EDFC333A8DC281BF61FF8424838 /* Pods-RNDraftJs */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E916778BDD573638CCBD48053E01413 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		189169BB941F52C949662494B9C4F8FE /* react-native-draft-js */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "react-native-draft-js";
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		579AF6AA132DD2F9E6B39F830EB69659 /* NSLogger */ = {
+			isa = PBXGroup;
+			children = (
+				8B6E19C1BB3D39E5B296CED3D5A8EC99 /* ObjC */,
+				7478C262A896743DF1D489FCF0F7C73F /* Support Files */,
+			);
+			name = NSLogger;
+			path = NSLogger;
+			sourceTree = "<group>";
+		};
+		7004099048B566D7FFC961FAB1743319 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				189169BB941F52C949662494B9C4F8FE /* react-native-draft-js */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		7478C262A896743DF1D489FCF0F7C73F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B9DAC84D67455DA4A2F742C7F1F085E6 /* NSLogger.xcconfig */,
+				27002D4BCC532180DEB968575EEC0779 /* NSLogger-dummy.m */,
+				DD4B53412114DD715112A3C038663747 /* NSLogger-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/NSLogger";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				7004099048B566D7FFC961FAB1743319 /* Development Pods */,
+				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
+				9F5208F1E5613BDFA67AAE07CD8DC066 /* Pods */,
+				E307C482B89AFA59B28882E9B1813A97 /* Products */,
+				0A4F3DE7EB2B1913489045A8E2C6EED6 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		7E916778BDD573638CCBD48053E01413 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				93399CF65BA043CFC8B74CB2C6DCF9D5 /* CFNetwork.framework */,
+				265DDDF4A5C807E517E64492A03D942D /* Foundation.framework */,
+				7712B80B3B5BECE1BC4115B192E23ED6 /* SystemConfiguration.framework */,
+				C7B53BB9900AAD4C476419FF001C7FB5 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		8B6E19C1BB3D39E5B296CED3D5A8EC99 /* ObjC */ = {
+			isa = PBXGroup;
+			children = (
+				A54C9729B2CDF43A5D3CE4544D0758ED /* LoggerClient.h */,
+				17D25B334299A913D3348C59FE95BE0C /* LoggerClient.m */,
+				21DE7341778BC18D7B80B2E79FF1AA01 /* LoggerCommon.h */,
+				FD3A02D9C4A2C29228D10058E1FD1148 /* NSLogger.h */,
+			);
+			name = ObjC;
+			sourceTree = "<group>";
+		};
+		9F5208F1E5613BDFA67AAE07CD8DC066 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				579AF6AA132DD2F9E6B39F830EB69659 /* NSLogger */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E307C482B89AFA59B28882E9B1813A97 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE26F14F531B515A2F0D6DF55E4345FF /* libNSLogger.a */,
+				42A4263B7009E0F4019B0DCE68D5113A /* libPods-RNDraftJs.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD575EDFC333A8DC281BF61FF8424838 /* Pods-RNDraftJs */ = {
+			isa = PBXGroup;
+			children = (
+				78F6CAB1C4696A6AAA7C3411A9EA9584 /* Pods-RNDraftJs-acknowledgements.markdown */,
+				3DBCD534C674D9476B6709594380848E /* Pods-RNDraftJs-acknowledgements.plist */,
+				AD2A1D005DC7EA2CFE46928CD71BE816 /* Pods-RNDraftJs-dummy.m */,
+				EA813E319D7B45DACEE66B9DBA153DBD /* Pods-RNDraftJs-frameworks.sh */,
+				0D162EBFD95A56D2C7372800F0EF8E5F /* Pods-RNDraftJs-resources.sh */,
+				274F96B527E0BA26A2691DF8BAB501BD /* Pods-RNDraftJs.debug.xcconfig */,
+				ECBD5794A4FC013C7D08C02CDFDFB38E /* Pods-RNDraftJs.release.xcconfig */,
+			);
+			name = "Pods-RNDraftJs";
+			path = "Target Support Files/Pods-RNDraftJs";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F92E530B71E938DBCBE17D3DF64A34FA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1704B134DA4468AA679B18B4E82413E /* LoggerClient.h in Headers */,
+				CE2357D63BF64C88EB28856FDED6E3E7 /* LoggerCommon.h in Headers */,
+				7CB85BEC2B90BD0B94A243032E8089D6 /* NSLogger.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		47B4F1DBAD6CFB4EADBA32A971427D28 /* NSLogger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8F37472130FCF47634DF151E17B3A6B /* Build configuration list for PBXNativeTarget "NSLogger" */;
+			buildPhases = (
+				BC24182111986C0C25A9D40968599153 /* Sources */,
+				0B2088CF5EC0DA0FA3D834A248B2FC02 /* Frameworks */,
+				F92E530B71E938DBCBE17D3DF64A34FA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NSLogger;
+			productName = NSLogger;
+			productReference = FE26F14F531B515A2F0D6DF55E4345FF /* libNSLogger.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E3B997D92E2713B9211D0393DC6A7075 /* Pods-RNDraftJs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 900EED3525D0299DAD6BCD0B483D525B /* Build configuration list for PBXNativeTarget "Pods-RNDraftJs" */;
+			buildPhases = (
+				B441B2A72D11DE4D0DB4D42818C93221 /* Sources */,
+				7357B43B936D977D4A457EE6C58735ED /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8F32825C79EAB12B8B45FCDBF71A10ED /* PBXTargetDependency */,
+			);
+			name = "Pods-RNDraftJs";
+			productName = "Pods-RNDraftJs";
+			productReference = 42A4263B7009E0F4019B0DCE68D5113A /* libPods-RNDraftJs.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = E307C482B89AFA59B28882E9B1813A97 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				47B4F1DBAD6CFB4EADBA32A971427D28 /* NSLogger */,
+				E3B997D92E2713B9211D0393DC6A7075 /* Pods-RNDraftJs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B441B2A72D11DE4D0DB4D42818C93221 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				489D682497A1DBE9009D567920903314 /* Pods-RNDraftJs-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC24182111986C0C25A9D40968599153 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				257DAEF7C1A64ABA9A88C4384D53EA9E /* LoggerClient.m in Sources */,
+				F121407F558983A9BB76375AED517412 /* NSLogger-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8F32825C79EAB12B8B45FCDBF71A10ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NSLogger;
+			target = 47B4F1DBAD6CFB4EADBA32A971427D28 /* NSLogger */;
+			targetProxy = F0EDF91D773532BF006927C053BCF4D4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0F2CFEF30D912A3F03A6107E8CE79C56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9DAC84D67455DA4A2F742C7F1F085E6 /* NSLogger.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/NSLogger/NSLogger-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		30DEDF029FC11E99553306563B95CF68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECBD5794A4FC013C7D08C02CDFDFB38E /* Pods-RNDraftJs.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		34FE9531DA9AF2820790339988D5FF41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		700C79F69281F6F9FCF4BB69E0C93B20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9DAC84D67455DA4A2F742C7F1F085E6 /* NSLogger.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/NSLogger/NSLogger-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		92DC688AF554F421FA42F28C21217BAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 274F96B527E0BA26A2691DF8BAB501BD /* Pods-RNDraftJs.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C104F7F091290C3D1E248192F07FE689 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C104F7F091290C3D1E248192F07FE689 /* Debug */,
+				34FE9531DA9AF2820790339988D5FF41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		900EED3525D0299DAD6BCD0B483D525B /* Build configuration list for PBXNativeTarget "Pods-RNDraftJs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				92DC688AF554F421FA42F28C21217BAF /* Debug */,
+				30DEDF029FC11E99553306563B95CF68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8F37472130FCF47634DF151E17B3A6B /* Build configuration list for PBXNativeTarget "NSLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F2CFEF30D912A3F03A6107E8CE79C56 /* Debug */,
+				700C79F69281F6F9FCF4BB69E0C93B20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

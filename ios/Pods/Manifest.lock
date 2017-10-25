@@ -1,0 +1,21 @@
+PODS:
+  - NSLogger (1.8.3):
+    - NSLogger/ObjC (= 1.8.3)
+  - NSLogger/ObjC (1.8.3)
+  - react-native-draft-js (0.0.1):
+    - NSLogger
+
+DEPENDENCIES:
+  - react-native-draft-js (from `../`)
+
+EXTERNAL SOURCES:
+  react-native-draft-js:
+    :path: ../
+
+SPEC CHECKSUMS:
+  NSLogger: c9b80dbeee1d65eb553647a1f6f1f72171b04808
+  react-native-draft-js: 82e122ac0eaa0d864e68d0c24342217b4d7e809e
+
+PODFILE CHECKSUM: 1d7b9bd9aebc151e691b1a866e2adac297cb6cdf
+
+COCOAPODS: 1.2.1

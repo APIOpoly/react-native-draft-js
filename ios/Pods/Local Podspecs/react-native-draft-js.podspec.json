@@ -1,0 +1,29 @@
+{
+  "name": "react-native-draft-js",
+  "version": "0.0.1",
+  "summary": "DraftJS for React Native (iOS only)",
+  "description": "Integrates DraftJS into react native using custom text entry view and rich text",
+  "license": "MIT",
+  "authors": "Andrew Beck",
+  "homepage": "https://github.com/abeck99/react-native-draft-js",
+  "source": {
+    "git": "https://github.com/abeck99/react-native-draft-js",
+    "tag": "0.0.1"
+  },
+  "requires_arc": true,
+  "platforms": {
+    "ios": "8.0"
+  },
+  "preserve_paths": [
+    "LICENSE",
+    "README.md",
+    "package.json",
+    "index.js"
+  ],
+  "source_files": "ios/*.{h,m}",
+  "dependencies": {
+    "NSLogger": [
+
+    ]
+  }
+}

@@ -18,15 +18,19 @@
 #import "RNTShadowDraftJSEditor.h"
 #import "RNTDraftJSEditor.h"
 
-static void collectDirtyNonTextDescendants(RNTShadowDraftJSEditor *shadowView, NSMutableArray *nonTextDescendants) {
-  for (RCTShadowView *child in shadowView.reactSubviews) {
-    if ([child isKindOfClass:[RNTShadowDraftJSEditor class]]) {
-      collectDirtyNonTextDescendants((RNTShadowDraftJSEditor *)child, nonTextDescendants);
-    } else if ([child isTextDirty]) {
-      [nonTextDescendants addObject:child];
-    }
-  }
-}
+#import "RCTShadowView+DraftJSDirty.h"
+
+#import <NSLogger/NSLogger.h>
+
+//static void collectDirtyNonTextDescendants(RNTShadowDraftJSEditor *shadowView, NSMutableArray *nonTextDescendants) {
+//  for (RCTShadowView *child in shadowView.reactSubviews) {
+//    if ([child isKindOfClass:[RNTShadowDraftJSEditor class]]) {
+//      collectDirtyNonTextDescendants((RNTShadowDraftJSEditor *)child, nonTextDescendants);
+//    } else if ([child isTextDirty]) {
+//      [nonTextDescendants addObject:child];
+//    }
+//  }
+//}
 
 @interface RNTShadowDraftJSEditor (Private)
 
@@ -48,6 +52,10 @@ RCT_EXPORT_MODULE()
 {
   return [RNTShadowDraftJSEditor new];
 }
+
+#pragma mark - View properties
+
+RCT_EXPORT_VIEW_PROPERTY(onKeysPressed, RCTDirectEventBlock)
 
 #pragma mark - Shadow properties
 
@@ -80,12 +88,16 @@ RCT_EXPORT_SHADOW_PROPERTY(selectable, BOOL)
 - (RCTViewManagerUIBlock)uiBlockToAmendWithShadowViewRegistry:(NSDictionary<NSNumber *, RCTShadowView *> *)shadowViewRegistry
 {
   for (RCTShadowView *rootView in shadowViewRegistry.allValues) {
+    if ([rootView isKindOfClass:[RNTShadowDraftJSEditor class]]) {
+      LoggerApp(1, @"Rootview (is root: %@): %x - is dirty: %@", @([rootView isReactRootView]), (unsigned int)rootView, @([rootView isDraftJsTextDirty]));
+    }
+
     if (![rootView isReactRootView]) {
       // This isn't a root view
       continue;
     }
     
-    if (![rootView isTextDirty]) {
+    if (![rootView isDraftJsTextDirty]) {
       // No text processing to be done
       continue;
     }
@@ -93,21 +105,20 @@ RCT_EXPORT_SHADOW_PROPERTY(selectable, BOOL)
     NSMutableArray<RCTShadowView *> *queue = [NSMutableArray arrayWithObject:rootView];
     for (NSInteger i = 0; i < queue.count; i++) {
       RCTShadowView *shadowView = queue[i];
-      RCTAssert([shadowView isTextDirty], @"Don't process any nodes that don't have dirty text");
+      RCTAssert([shadowView isDraftJsTextDirty], @"Don't process any nodes that don't have dirty text");
       
       if ([shadowView isKindOfClass:[RNTShadowDraftJSEditor class]]) {
         ((RNTShadowDraftJSEditor *)shadowView).fontSizeMultiplier = self.bridge.accessibilityManager.multiplier;
         [(RNTShadowDraftJSEditor *)shadowView recomputeText];
-        collectDirtyNonTextDescendants((RNTShadowDraftJSEditor *)shadowView, queue);
       } else {
         for (RCTShadowView *child in [shadowView reactSubviews]) {
-          if ([child isTextDirty]) {
+          if ([child isDraftJsTextDirty]) {
             [queue addObject:child];
           }
         }
       }
       
-      [shadowView setTextComputed];
+      [shadowView setDraftJsTextComputed];
     }
   }
   

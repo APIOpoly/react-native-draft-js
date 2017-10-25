@@ -15,6 +15,8 @@
 
 #import "RNTShadowDraftJSEditor.h"
 
+#import <NSLogger/NSLogger.h>
+
 static void collectNonTextDescendants(RNTDraftJSEditor *view, NSMutableArray *nonTextDescendants)
 {
   for (UIView *child in view.reactSubviews) {
@@ -42,8 +44,26 @@ static void collectNonTextDescendants(RNTDraftJSEditor *view, NSMutableArray *no
     
     self.opaque = NO;
     self.contentMode = UIViewContentModeRedraw;
+    
+    self.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.spellCheckingType = UITextSpellCheckingTypeNo;
+    self.smartQuotesType = UITextSmartQuotesTypeNo;
+    self.smartDashesType = UITextSmartDashesTypeNo;
+    self.smartInsertDeleteType = UITextSmartInsertDeleteTypeNo;
+    
+    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    [self addGestureRecognizer:gesture];
   }
   return self;
+}
+
+- (void) tap:(UIGestureRecognizer*)gesture
+{
+  if ([self canBecomeFirstResponder])
+  {
+    [self becomeFirstResponder];
+  }
 }
 
 - (NSString *)description
@@ -230,7 +250,7 @@ static void collectNonTextDescendants(RNTDraftJSEditor *view, NSMutableArray *no
 
 - (BOOL)canBecomeFirstResponder
 {
-  return _selectable;
+  return YES;
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
@@ -262,6 +282,32 @@ static void collectNonTextDescendants(RNTDraftJSEditor *view, NSMutableArray *no
   UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
   pasteboard.items = @[item];
 #endif
+}
+
+- (BOOL)hasText
+{
+  return _textStorage.length > 0;
+}
+
+- (void)insertText:(NSString *)text
+{
+  LoggerApp(1, @"New text %@ just entered", text);
+  
+  RCTDirectEventBlock onKeysPressed = self.onKeysPressed;
+  if (onKeysPressed)
+  {
+    onKeysPressed(@{@"text": @[text]});
+  }
+}
+
+- (void)deleteBackward
+{
+  LoggerApp(1, @"BAckspace entered");
+  RCTDirectEventBlock onKeysPressed = self.onKeysPressed;
+  if (onKeysPressed)
+  {
+    onKeysPressed(@{@"text": @[@"backspace"]});
+	}
 }
 
 @end

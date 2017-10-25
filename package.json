@@ -1,6 +1,11 @@
 {
 	"name": "RNDraftJs",
 	"version": "0.0.1",
+	"summary": "DraftJS for React Native (iOS only)",
+	"description": "Integrates DraftJS into react native using custom text entry view and rich text",
+	"license": "MIT",
+	"author": "Andrew Beck",
+	"homepage": "https://github.com/abeck99/react-native-draft-js",
 	"private": true,
 	"scripts": {
 		"start": "react-native start",
@@ -8,7 +13,6 @@
 	},
 	"dependencies": {
 		"draft-js": "^0.10.3",
-		"draft-js-export-html": "^1.2.0",
 		"react": "15.4.2",
 		"react-native": "^0.42.3",
 		"react-native-htmlview": "^0.12.1"

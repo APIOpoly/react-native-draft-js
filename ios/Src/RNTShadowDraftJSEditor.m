@@ -17,6 +17,7 @@
 #import <React/RCTUtils.h>
 
 #import "RNTDraftJSEditor.h"
+#import "RCTShadowView+DraftJSDirty.h"
 
 extern NSString *const RCTShadowViewAttributeName;
 
@@ -91,7 +92,7 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
 - (void)contentSizeMultiplierDidChange:(NSNotification *)note
 {
   YGNodeMarkDirty(self.cssNode);
-  [self dirtyText];
+  [self dirtyDraftJsText];
 }
 
 - (NSDictionary<NSString *, id> *)processUpdatedProperties:(NSMutableSet<RCTApplierBlock> *)applierBlocks
@@ -201,16 +202,16 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
   return textStorage;
 }
 
-- (void)dirtyText
+- (void) dirtyDraftJsText
 {
-  [super dirtyText];
+  [super dirtyDraftJsText];
   _cachedTextStorage = nil;
 }
 
 - (void)recomputeText
 {
   [self attributedString];
-  [self setTextComputed];
+  [self setDraftJsTextComputed];
   [self dirtyPropagation];
 }
 
@@ -237,7 +238,7 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
                                         backgroundColor:(UIColor *)backgroundColor
                                                 opacity:(CGFloat)opacity
 {
-  if (![self isTextDirty] && _cachedAttributedString) {
+  if (![self isDraftJsTextDirty] && _cachedAttributedString) {
     return _cachedAttributedString;
   }
   
@@ -570,14 +571,26 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
 - (void)setBackgroundColor:(UIColor *)backgroundColor
 {
   super.backgroundColor = backgroundColor;
-  [self dirtyText];
+  [self dirtyDraftJsText];
 }
 
 #define RCT_TEXT_PROPERTY(setProp, ivar, type) \
 - (void)set##setProp:(type)value;              \
 {                                              \
 ivar = value;                                \
-[self dirtyText];                            \
+[self dirtyDraftJsText];                            \
+}
+
+- (void) setContent:(NSDictionary *)content
+{
+  contentModel = nil;
+  _content = content;
+  [self dirtyDraftJsText];
+}
+
+- (NSDictionary*) content
+{
+  return _content;
 }
 
 RCT_TEXT_PROPERTY(AdjustsFontSizeToFit, _adjustsFontSizeToFit, BOOL)
@@ -610,7 +623,7 @@ RCT_TEXT_PROPERTY(TextShadowColor, _textShadowColor, UIColor *);
       ((RNTShadowDraftJSEditor *)child).allowFontScaling = allowFontScaling;
     }
   }
-  [self dirtyText];
+  [self dirtyDraftJsText];
 }
 
 - (void)setFontSizeMultiplier:(CGFloat)fontSizeMultiplier
@@ -625,7 +638,7 @@ RCT_TEXT_PROPERTY(TextShadowColor, _textShadowColor, UIColor *);
       ((RNTShadowDraftJSEditor *)child).fontSizeMultiplier = fontSizeMultiplier;
     }
   }
-  [self dirtyText];
+  [self dirtyDraftJsText];
 }
 
 - (void)setMinimumFontScale:(CGFloat)minimumFontScale
@@ -633,7 +646,7 @@ RCT_TEXT_PROPERTY(TextShadowColor, _textShadowColor, UIColor *);
   if (minimumFontScale >= 0.01) {
     _minimumFontScale = minimumFontScale;
   }
-  [self dirtyText];
+  [self dirtyDraftJsText];
 }
 
 @end
