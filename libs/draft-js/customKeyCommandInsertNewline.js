@@ -10,14 +10,23 @@
  *
  */
 
-'use strict';
+'use strict'
 
 import {EditorState} from '.'
 import customDraftModifier from './customDraftModifier'
 
 export default function customKeyCommandInsertNewline(editorState, textType) {
-  var contentState = customDraftModifier.splitBlock(editorState.getCurrentContent(), editorState.getSelection(), textType);
-  return EditorState.push(editorState, contentState, 'split-block');
+  var contentState = customDraftModifier.splitBlock(
+  	editorState.getCurrentContent(),
+  	editorState.getSelection(),
+  	textType
+  )
+
+  return EditorState.push(
+  	editorState,
+  	contentState,
+  	'split-block'
+  )
 }
 
 module.exports = customKeyCommandInsertNewline;
