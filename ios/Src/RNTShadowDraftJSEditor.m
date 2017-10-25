@@ -58,7 +58,6 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
   if ((self = [super init])) {
     _fontSize = NAN;
     _letterSpacing = NAN;
-    _isHighlighted = NO;
     _textDecorationStyle = NSUnderlineStyleSingle;
     _opacity = 1.0;
     _cachedTextStorageWidth = -1;
@@ -183,13 +182,7 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
   NSTextContainer *textContainer = [NSTextContainer new];
   textContainer.lineFragmentPadding = 0.0;
   
-  if (_numberOfLines > 0) {
-    textContainer.lineBreakMode = _ellipsizeMode;
-  } else {
-    textContainer.lineBreakMode = NSLineBreakByClipping;
-  }
-  
-  textContainer.maximumNumberOfLines = _numberOfLines;
+  textContainer.maximumNumberOfLines = 0;
   textContainer.size = (CGSize){widthMode == YGMeasureModeUndefined ? CGFLOAT_MAX : width, CGFLOAT_MAX};
   
   [layoutManager addTextContainer:textContainer];
@@ -270,15 +263,12 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
   
   CGFloat heightOfTallestSubview = 0.0;
   NSMutableAttributedString *attributedString = [NSMutableAttributedString new];
-  [attributedString appendAttributedString:[[NSAttributedString alloc] initWithString:_html ?: @""]];
+  [attributedString appendAttributedString:[[NSAttributedString alloc] initWithString:[contentModel description]]];
   
   [self _addAttribute:NSForegroundColorAttributeName
             withValue:[foregroundColor colorWithAlphaComponent:CGColorGetAlpha(foregroundColor.CGColor) * opacity]
    toAttributedString:attributedString];
   
-  if (_isHighlighted) {
-    [self _addAttribute:RCTIsHighlightedAttributeName withValue:@YES toAttributedString:attributedString];
-  }
   if (useBackgroundColor && backgroundColor) {
     [self _addAttribute:NSBackgroundColorAttributeName
               withValue:[backgroundColor colorWithAlphaComponent:CGColorGetAlpha(backgroundColor.CGColor) * opacity]
@@ -364,16 +354,12 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
   if (self.textAlign != newTextAlign) {
     self.textAlign = newTextAlign;
   }
-  NSWritingDirection newWritingDirection = _writingDirection ?: NSWritingDirectionNatural;
-  if (self.writingDirection != newWritingDirection) {
-    self.writingDirection = newWritingDirection;
-  }
-  
+
   // if we found anything, set it :D
   if (hasParagraphStyle) {
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
     paragraphStyle.alignment = _textAlign;
-    paragraphStyle.baseWritingDirection = _writingDirection;
+    paragraphStyle.baseWritingDirection = NSWritingDirectionNatural;
     CGFloat lineHeight = round(_lineHeight * fontSizeMultiplier);
     if (heightOfTallestSubview > lineHeight) {
       lineHeight = ceilf(heightOfTallestSubview);
@@ -427,9 +413,9 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
                                            self.paddingAsInsets);
   
   
-  if (_adjustsFontSizeToFit) {
-    textFrame = [self updateStorage:textStorage toFitFrame:textFrame];
-  }
+//  if (_adjustsFontSizeToFit) {
+//    textFrame = [self updateStorage:textStorage toFitFrame:textFrame];
+//  }
   
   return textFrame;
 }
@@ -593,23 +579,18 @@ ivar = value;                                \
   return _content;
 }
 
-RCT_TEXT_PROPERTY(AdjustsFontSizeToFit, _adjustsFontSizeToFit, BOOL)
 RCT_TEXT_PROPERTY(Color, _color, UIColor *)
 RCT_TEXT_PROPERTY(FontFamily, _fontFamily, NSString *)
 RCT_TEXT_PROPERTY(FontSize, _fontSize, CGFloat)
 RCT_TEXT_PROPERTY(FontWeight, _fontWeight, NSString *)
 RCT_TEXT_PROPERTY(FontStyle, _fontStyle, NSString *)
 RCT_TEXT_PROPERTY(FontVariant, _fontVariant, NSArray *)
-RCT_TEXT_PROPERTY(IsHighlighted, _isHighlighted, BOOL)
 RCT_TEXT_PROPERTY(LetterSpacing, _letterSpacing, CGFloat)
 RCT_TEXT_PROPERTY(LineHeight, _lineHeight, CGFloat)
-RCT_TEXT_PROPERTY(NumberOfLines, _numberOfLines, NSUInteger)
-RCT_TEXT_PROPERTY(EllipsizeMode, _ellipsizeMode, NSLineBreakMode)
 RCT_TEXT_PROPERTY(TextAlign, _textAlign, NSTextAlignment)
 RCT_TEXT_PROPERTY(TextDecorationColor, _textDecorationColor, UIColor *);
 RCT_TEXT_PROPERTY(TextDecorationLine, _textDecorationLine, RCTTextDecorationLineType);
 RCT_TEXT_PROPERTY(TextDecorationStyle, _textDecorationStyle, NSUnderlineStyle);
-RCT_TEXT_PROPERTY(WritingDirection, _writingDirection, NSWritingDirection)
 RCT_TEXT_PROPERTY(Opacity, _opacity, CGFloat)
 RCT_TEXT_PROPERTY(TextShadowOffset, _textShadowOffset, CGSize);
 RCT_TEXT_PROPERTY(TextShadowRadius, _textShadowRadius, CGFloat);

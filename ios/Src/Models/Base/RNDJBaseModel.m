@@ -47,4 +47,31 @@
   return [NSDictionary dictionaryWithDictionary:outMap];
 }
 
+- (NSString*) description
+{
+  return [NSString stringWithFormat:@"%@: Properties: %@", [super description], properties];
+}
+
 @end
+
+NSString* stringFromString(NSString* inString) {
+  return [inString isKindOfClass:[NSString class]] ? inString : nil;
+}
+
+NSUInteger unsignedIntegerFromNSNumber(NSNumber* inNumber) {
+  CONVERT_NSNUMBER_IF_NEEDED(inNumber, NSNumberFormatterNoStyle)
+  return [inNumber unsignedIntegerValue];
+}
+
+CGFloat floatFromNSNumber(NSNumber* inNumber) {
+  CONVERT_NSNUMBER_IF_NEEDED(inNumber, NSNumberFormatterDecimalStyle)
+  return [inNumber floatValue];
+}
+
+UIColor* colorFromColor(UIColor* inColor) {
+  return [inColor isKindOfClass:[UIColor class]] ? inColor : nil;
+}
+
+NSDictionary* dictionaryFromDictionary(NSDictionary* inDict) {
+  return [inDict isKindOfClass:[NSDictionary class]] ? inDict : nil;
+}

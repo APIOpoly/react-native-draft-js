@@ -145,7 +145,7 @@ const blockFontTypes = {
 // Keep in mind that inline styles can possibly overlap, so 
 //    if they override the same value it is undefined which one it will use
 //    (for example UNDERLINE and STRIKETHROUGH)
-const inlineStyleFontTypes {
+const inlineStyleFontTypes = {
   ITALIC: {
     fontStyle: 'italic',
   },

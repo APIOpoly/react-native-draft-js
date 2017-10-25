@@ -30,9 +30,13 @@ if (dictValue) {return propertyTypeFromDictionaryType(dictValue);} \
 return default; \
 }
 
-NSString* stringFromString(NSString* inString) {
-  return [inString isKindOfClass:[NSString class]] ? inString : nil;
-}
+NSString* stringFromString(NSString* inString);
+NSUInteger unsignedIntegerFromNSNumber(NSNumber* inNumber);
+CGFloat floatFromNSNumber(NSNumber* inNumber);
+UIColor* colorFromColor(UIColor* inColor);
+NSDictionary* dictionaryFromDictionary(NSDictionary* inDict);
+bool boolFromNSNumber(NSNumber* inNumber);
+
 #define REGISTER_STRING(propName) REGISTER_PROPERTY(propName, NSString*, NSString*, stringFromString, nil)
 
 //NSNumberFormatterNoStyle
@@ -44,38 +48,14 @@ f.numberStyle = formatterStyle; \
 inObject = [f numberFromString:(NSString*) inObject]; \
 }
 
-NSUInteger unsignedIntegerFromNSNumber(NSNumber* inNumber) {
-  CONVERT_NSNUMBER_IF_NEEDED(inNumber, NSNumberFormatterNoStyle)
-  return [inNumber unsignedIntegerValue];
-}
 #define REGISTER_UINTEGER(propName) REGISTER_PROPERTY(propName, NSNumber*, NSUInteger, unsignedIntegerFromNSNumber, 0)
 
-CGFloat floatFromNSNumber(NSNumber* inNumber) {
-  CONVERT_NSNUMBER_IF_NEEDED(inNumber, NSNumberFormatterDecimalStyle)
-  return [inNumber floatValue];
-}
 #define REGISTER_FLOAT(propName) REGISTER_PROPERTY(propName, NSNumber*, CGFloat, floatFromNSNumber, 0)
 
-bool boolFromNSNumber(NSNumber* inNumber) {
-  if ([inNumber isKindOfClass:[NSString class]]) {
-    NSString* inString = [((NSString*) inNumber) uppercaseString];
-    if ([inString isEqualToString:@"YES"] || [inString isEqualToString:@"TRUE"]) {
-      return true;
-    }
-    return false;
-  }
-  return [inNumber boolValue];
-}
 #define REGISTER_BOOL(propName) REGISTER_PROPERTY(propName, NSNumber*, bool, boolFromNSNumber, false)
 
-UIColor* colorFromColor(UIColor* inColor) {
-  return [inColor isKindOfClass:[UIColor class]] ? inColor : nil;
-}
 #define REGISTER_COLOR(propName) REGISTER_PROPERTY(propName, UIColor*, UIColor*, colorFromColor, nil)
 
-NSDictionary* dictionaryFromDictionary(NSDictionary* inDict) {
-  return [inDict isKindOfClass:[NSDictionary class]] ? inDict : nil;
-}
 #define REGISTER_DICTIONARY(propName) REGISTER_PROPERTY(propName, NSDictionary*, NSDictionary*, dictionaryFromDictionary, nil)
 
 #define REGISTER_SUBOBJECT(propName, ModelType) \
