@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import {
+  Dimensions,
   AppRegistry,
   StyleSheet,
   Text,
@@ -21,6 +22,7 @@ import {
 } from './libs/draft-js'
 
 const DraftJSEditor = requireNativeComponent('RNTDraftJSEditor', null)
+const { width } = Dimensions.get('window')
 
 export default class RNDraftJs extends Component {
   constructor(props) {
@@ -35,24 +37,28 @@ export default class RNDraftJs extends Component {
   }
 
   _onKeysPressed = (event) => {
-    let keyCommands = event.nativeEvent.text
+    var didStateChange = false
+    let textList = event.nativeEvent.text
 
     var currentState = this.state.editorState
-    for (let keyCommand of keyCommands) {
-      console.log(`Command: ${keyCommand}`)
+    for (let text of textList) {
+      console.log(`Command: ${text}`)
       var newState = null
-      if (keyCommand.length > 1) {
-        newState = RichUtils.handleKeyCommand(currentState, keyCommand)
-      } else {
-        newState = insertText(currentState, keyCommand)
-      }
+        newState = insertText(currentState, text)
 
       if (newState) {
         currentState = newState
+        didStateChange = true
       }
     }
 
-    this.onChange(currentState)
+    if (didStateChange) {
+      this.onChange(currentState)
+    }
+  }
+
+  _onBackspacePressed = (event) => {
+    console.log('Backspace')
   }
 
   render() {
@@ -80,7 +86,8 @@ export default class RNDraftJs extends Component {
           style={styles.draftTest}
           blockFontTypes={blockFontTypes}
           inlineStyleFontTypes={inlineStyleFontTypes} 
-          onKeysPressed={this._onKeysPressed}>
+          onKeysPressed={this._onKeysPressed}
+          onBackspacePressed={this._onBackspacePressed}>
         </DraftJSEditor>
       </View>
     );
@@ -114,27 +121,27 @@ const blockFontTypes = {
 //  },
   unstyled: { // No real need to use since values from styles are already used
   },
-  header-one: {
+  headerOne: {
     fontSize: 22
   },
-  header-two: {
+  headerTwo: {
     fontSize: 22
   },
-  header-three: {
+  headerThree: {
     fontSize: 22
   },
-  header-four: {
+  headerFour: {
     fontSize: 22
   },
-  header-five: {
+  headerFive: {
     fontSize: 22
   },
-  header-six: {
+  headerSix: {
     fontSize: 22
   },
   blockquote: {
   },
-  code-block: {
+  codeBlock: {
   },
   atomic: {
   },
@@ -178,9 +185,11 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   draftTest: {
-    textAlign: 'center',
+    width: width,
+    textAlign: 'left',
     color: '#333333',
     marginBottom: 5,
+    minHeight: 35,
   }
 });
 

@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#define NSStringize_helper(x) #x
-#define NSStringize(x) @NSStringize_helper(x)
+#import "RNDJUtil.h"
 
 @interface RNDJBaseModel : NSObject
 {

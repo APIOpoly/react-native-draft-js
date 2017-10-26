@@ -291,8 +291,6 @@ static void collectNonTextDescendants(RNTDraftJSEditor *view, NSMutableArray *no
 
 - (void)insertText:(NSString *)text
 {
-  LoggerApp(1, @"New text %@ just entered", text);
-  
   RCTDirectEventBlock onKeysPressed = self.onKeysPressed;
   if (onKeysPressed)
   {
@@ -302,11 +300,10 @@ static void collectNonTextDescendants(RNTDraftJSEditor *view, NSMutableArray *no
 
 - (void)deleteBackward
 {
-  LoggerApp(1, @"BAckspace entered");
-  RCTDirectEventBlock onKeysPressed = self.onKeysPressed;
-  if (onKeysPressed)
+  RCTDirectEventBlock onBackspacePressed = self.onBackspacePressed;
+  if (onBackspacePressed)
   {
-    onKeysPressed(@{@"text": @[@"backspace"]});
+    onBackspacePressed(@{});
 	}
 }
 

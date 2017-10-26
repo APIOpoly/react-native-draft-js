@@ -36,6 +36,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* RNDraftJsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNDraftJsTests.m */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		9151D00C1FA1E502007E7F52 /* RNDJStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9151D00B1FA1E502007E7F52 /* RNDJStyle.m */; };
 		9161EFDD1FA06769001E3EE8 /* RNDJBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFDC1FA06769001E3EE8 /* RNDJBaseModel.m */; };
 		9161EFE01FA07F00001E3EE8 /* RNDJContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFDF1FA07F00001E3EE8 /* RNDJContentModel.m */; };
 		9161EFE31FA07F1A001E3EE8 /* RNDJBlockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFE21FA07F1A001E3EE8 /* RNDJBlockModel.m */; };
@@ -269,6 +270,9 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		9151D00A1FA1E502007E7F52 /* RNDJStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJStyle.h; sourceTree = "<group>"; };
+		9151D00B1FA1E502007E7F52 /* RNDJStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJStyle.m; sourceTree = "<group>"; };
+		9151D00D1FA1E6B5007E7F52 /* RNDJUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJUtil.h; sourceTree = "<group>"; };
 		9161EFDB1FA06769001E3EE8 /* RNDJBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJBaseModel.h; sourceTree = "<group>"; };
 		9161EFDC1FA06769001E3EE8 /* RNDJBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJBaseModel.m; sourceTree = "<group>"; };
 		9161EFDE1FA07F00001E3EE8 /* RNDJContentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJContentModel.h; sourceTree = "<group>"; };
@@ -521,6 +525,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9151CFF01FA1E4EE007E7F52 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9151D00A1FA1E502007E7F52 /* RNDJStyle.h */,
+				9151D00B1FA1E502007E7F52 /* RNDJStyle.m */,
+				9151D00D1FA1E6B5007E7F52 /* RNDJUtil.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		9161EFC01FA06738001E3EE8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +565,7 @@
 		91CBEB8F1F9D50D20038C517 /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				9151CFF01FA1E4EE007E7F52 /* Utils */,
 				9161EFC01FA06738001E3EE8 /* Models */,
 				91CBEBB51F9DE1FD0038C517 /* RNTDraftJSEditor.h */,
 				91CBEBB31F9DE1FD0038C517 /* RNTDraftJSEditor.m */,
@@ -1062,6 +1077,7 @@
 				9161EFDD1FA06769001E3EE8 /* RNDJBaseModel.m in Sources */,
 				9161EFE91FA07F4B001E3EE8 /* RNDJEntityRangeModel.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				9151D00C1FA1E502007E7F52 /* RNDJStyle.m in Sources */,
 				9161EFE01FA07F00001E3EE8 /* RNDJContentModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,19 @@
 
 @implementation RNDJContentModel
 
-REGISTER_SUBOBJECT_ARRAY(blocks, RNDJBlockModel)
+- (NSArray*) blocks
+{
+  NSArray* subObjectArray = [properties objectForKey:@"blocks"];
+
+  if (subObjectArray) {
+    NSArray* blocks = [RNDJBlockModel fromDictionaries:subObjectArray];
+    ((RNDJBlockModel*)[blocks lastObject]).isLastBlock = YES;
+    return blocks;
+  }
+
+  return @[];
+}
+
 REGISTER_SUBOBJECT_MAP(entityMap, RNDJEntityModel)
 
 @end

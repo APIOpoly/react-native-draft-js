@@ -28,6 +28,8 @@ extern NSString *const RCTReactTagAttributeName;
 }
 
 @property (nonatomic, copy) NSDictionary *content;
+@property (nonatomic, copy) NSDictionary *blockFontTypes;
+@property (nonatomic, copy) NSDictionary *inlineStyleFontTypes;
 
 @property (nonatomic, copy) NSString *fontFamily;
 @property (nonatomic, assign) CGFloat fontSize;
@@ -46,7 +48,6 @@ extern NSString *const RCTReactTagAttributeName;
 @property (nonatomic, assign) CGFloat textShadowRadius;
 @property (nonatomic, strong) UIColor *textShadowColor;
 
-@property (nonatomic, assign) CGFloat minimumFontScale;
 @property (nonatomic, assign) BOOL selectable;
 @property (nonatomic, assign) CGFloat fontSizeMultiplier;
 @property (nonatomic, assign) BOOL allowFontScaling;

@@ -17,6 +17,8 @@
 @property (nonatomic, assign) BOOL selectable;
 
 @property (nonatomic, copy) RCTDirectEventBlock onKeysPressed;
+@property (nonatomic, copy) RCTDirectEventBlock onBackspacePressed;
+@property (nonatomic, copy) RCTDirectEventBlock onNewlinePressed;
 
 @property(nonatomic) UITextAutocapitalizationType autocapitalizationType; // default is UITextAutocapitalizationTypeSentences
 @property(nonatomic) UITextAutocorrectionType autocorrectionType;         // default is UITextAutocorrectionTypeDefault

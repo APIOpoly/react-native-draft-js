@@ -56,34 +56,34 @@ RCT_EXPORT_MODULE()
 #pragma mark - View properties
 
 RCT_EXPORT_VIEW_PROPERTY(onKeysPressed, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onBackspacePressed, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onNewlinePressed, RCTDirectEventBlock)
 
 #pragma mark - Shadow properties
 
-RCT_EXPORT_SHADOW_PROPERTY(html, NSString)
-RCT_EXPORT_SHADOW_PROPERTY(color, UIColor)
+RCT_EXPORT_SHADOW_PROPERTY(content, NSDictionary)
+RCT_EXPORT_SHADOW_PROPERTY(blockFontTypes, NSDictionary)
+RCT_EXPORT_SHADOW_PROPERTY(inlineStyleFontTypes, NSDictionary)
+
 RCT_EXPORT_SHADOW_PROPERTY(fontFamily, NSString)
 RCT_EXPORT_SHADOW_PROPERTY(fontSize, CGFloat)
 RCT_EXPORT_SHADOW_PROPERTY(fontWeight, NSString)
 RCT_EXPORT_SHADOW_PROPERTY(fontStyle, NSString)
 RCT_EXPORT_SHADOW_PROPERTY(fontVariant, NSArray)
-RCT_EXPORT_SHADOW_PROPERTY(isHighlighted, BOOL)
 RCT_EXPORT_SHADOW_PROPERTY(letterSpacing, CGFloat)
-RCT_EXPORT_SHADOW_PROPERTY(lineHeight, CGFloat)
-RCT_EXPORT_SHADOW_PROPERTY(numberOfLines, NSUInteger)
-RCT_EXPORT_SHADOW_PROPERTY(ellipsizeMode, NSLineBreakMode)
-RCT_EXPORT_SHADOW_PROPERTY(textAlign, NSTextAlignment)
-RCT_EXPORT_SHADOW_PROPERTY(textDecorationStyle, NSUnderlineStyle)
-RCT_EXPORT_SHADOW_PROPERTY(textDecorationColor, UIColor)
-RCT_EXPORT_SHADOW_PROPERTY(textDecorationLine, RNTTextDecorationLineType)
-RCT_EXPORT_SHADOW_PROPERTY(writingDirection, NSWritingDirection)
-RCT_EXPORT_SHADOW_PROPERTY(allowFontScaling, BOOL)
+RCT_EXPORT_SHADOW_PROPERTY(color, UIColor)
 RCT_EXPORT_SHADOW_PROPERTY(opacity, CGFloat)
+RCT_EXPORT_SHADOW_PROPERTY(textAlign, NSTextAlignment)
+RCT_EXPORT_SHADOW_PROPERTY(lineHeight, CGFloat)
+RCT_EXPORT_SHADOW_PROPERTY(textDecorationStyle, NSUnderlineStyle)
+RCT_EXPORT_SHADOW_PROPERTY(textDecorationLine, RNTTextDecorationLineType)
+RCT_EXPORT_SHADOW_PROPERTY(textDecorationColor, UIColor)
 RCT_EXPORT_SHADOW_PROPERTY(textShadowOffset, CGSize)
 RCT_EXPORT_SHADOW_PROPERTY(textShadowRadius, CGFloat)
 RCT_EXPORT_SHADOW_PROPERTY(textShadowColor, UIColor)
-RCT_EXPORT_SHADOW_PROPERTY(adjustsFontSizeToFit, BOOL)
-RCT_EXPORT_SHADOW_PROPERTY(minimumFontScale, CGFloat)
+
 RCT_EXPORT_SHADOW_PROPERTY(selectable, BOOL)
+RCT_EXPORT_SHADOW_PROPERTY(allowFontScaling, BOOL)
 
 - (RCTViewManagerUIBlock)uiBlockToAmendWithShadowViewRegistry:(NSDictionary<NSNumber *, RCTShadowView *> *)shadowViewRegistry
 {

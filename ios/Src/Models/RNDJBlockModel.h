@@ -19,4 +19,6 @@
 @property(readonly) NSString* text;
 @property(readonly) NSString* type;
 
+@property(assign) BOOL isLastBlock;
+
 @end
