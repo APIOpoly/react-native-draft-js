@@ -1,9 +1,9 @@
 import {EditorState, Modifier} from '.'
 
-export default function insertTextAtSelection(editorState, selection, text) {
+export default function insertTextAtPosition(editorState, text, position) {
   const newContentState = Modifier.insertText(
   	editorState.getCurrentContent(),
-  	selection,
+  	position,
   	text,
   	editorState.getCurrentInlineStyle()
   )

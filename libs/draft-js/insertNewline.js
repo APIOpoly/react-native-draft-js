@@ -1,7 +1,7 @@
 import {EditorState, Modifier} from '.'
 
-function keyCommandInsertNewline(editorState) {
-  var contentState = DraftModifier.splitBlock(
+export default function keyCommandInsertNewline(editorState) {
+  var contentState = Modifier.splitBlock(
     editorState.getCurrentContent(),
     editorState.getSelection()
   )

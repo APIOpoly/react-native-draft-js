@@ -46,6 +46,7 @@
 		91CBEBB81F9DE2B60038C517 /* RNTDraftJSEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBEBB31F9DE1FD0038C517 /* RNTDraftJSEditor.m */; };
 		91CBEBB91F9DE2BA0038C517 /* RNTDraftJSEditorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBEBB61F9DE1FD0038C517 /* RNTDraftJSEditorManager.m */; };
 		91CBEBBA1F9DE2BE0038C517 /* RNTShadowDraftJSEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBEBB21F9DE1FD0038C517 /* RNTShadowDraftJSEditor.m */; };
+		91F2646E1FA249F300A8B943 /* RNDJSelectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F2646D1FA249F300A8B943 /* RNDJSelectionModel.m */; };
 		91F72F421F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F72F411F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.m */; };
 		B695FC26D6898C2FF5234C00 /* libPods-RNDraftJs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 563F3EB3377144FE320C0B88 /* libPods-RNDraftJs.a */; };
 /* End PBXBuildFile section */
@@ -291,6 +292,8 @@
 		91CBEBB51F9DE1FD0038C517 /* RNTDraftJSEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTDraftJSEditor.h; sourceTree = "<group>"; };
 		91CBEBB61F9DE1FD0038C517 /* RNTDraftJSEditorManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTDraftJSEditorManager.m; sourceTree = "<group>"; };
 		91CBEBB71F9DE1FD0038C517 /* RNTShadowDraftJSEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTShadowDraftJSEditor.h; sourceTree = "<group>"; };
+		91F2646C1FA249F300A8B943 /* RNDJSelectionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJSelectionModel.h; sourceTree = "<group>"; };
+		91F2646D1FA249F300A8B943 /* RNDJSelectionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJSelectionModel.m; sourceTree = "<group>"; };
 		91F72F401F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RCTShadowView+DraftJSDirty.h"; sourceTree = "<group>"; };
 		91F72F411F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "RCTShadowView+DraftJSDirty.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -549,6 +552,8 @@
 				9161EFE81FA07F4B001E3EE8 /* RNDJEntityRangeModel.m */,
 				9161EFEA1FA07F61001E3EE8 /* RNDJInlineStyleRangeModel.h */,
 				9161EFEB1FA07F61001E3EE8 /* RNDJInlineStyleRangeModel.m */,
+				91F2646C1FA249F300A8B943 /* RNDJSelectionModel.h */,
+				91F2646D1FA249F300A8B943 /* RNDJSelectionModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1076,6 +1081,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				9161EFDD1FA06769001E3EE8 /* RNDJBaseModel.m in Sources */,
 				9161EFE91FA07F4B001E3EE8 /* RNDJEntityRangeModel.m in Sources */,
+				91F2646E1FA249F300A8B943 /* RNDJSelectionModel.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				9151D00C1FA1E502007E7F52 /* RNDJStyle.m in Sources */,
 				9161EFE01FA07F00001E3EE8 /* RNDJContentModel.m in Sources */,

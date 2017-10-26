@@ -16,9 +16,17 @@
 @property (nonatomic, assign) CGRect textFrame;
 @property (nonatomic, assign) BOOL selectable;
 
-@property (nonatomic, copy) RCTDirectEventBlock onKeysPressed;
-@property (nonatomic, copy) RCTDirectEventBlock onBackspacePressed;
-@property (nonatomic, copy) RCTDirectEventBlock onNewlinePressed;
+@property (nonatomic, copy) RCTDirectEventBlock onInsertTextRequest;
+@property (nonatomic, copy) RCTDirectEventBlock onBackspaceRequest;
+@property (nonatomic, copy) RCTDirectEventBlock onNewlineRequest;
+@property (nonatomic, copy) RCTDirectEventBlock onFocusChanged;
+@property (nonatomic, copy) RCTDirectEventBlock onSelectionChangeRequest;
+
+@property (nonatomic, copy) UIColor* selectionColor;
+@property (nonatomic, assign) CGFloat selectionOpacity;
+
+@property (nonatomic, copy) NSString* selectionKey;
+@property (nonatomic, assign) NSUInteger selectionOffset;
 
 @property(nonatomic) UITextAutocapitalizationType autocapitalizationType; // default is UITextAutocapitalizationTypeSentences
 @property(nonatomic) UITextAutocorrectionType autocorrectionType;         // default is UITextAutocorrectionTypeDefault

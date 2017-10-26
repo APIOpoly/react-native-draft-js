@@ -20,7 +20,7 @@ export {default as insertText} from './insertText'
 export {default as customKeyCommandInsertNewline} from './customKeyCommandInsertNewline'
 
 // Custom Commands 2
-export {default as insertTextAtSelection} from './insertTextAtSelection'
+export {default as insertTextAtPosition} from './insertTextAtPosition'
 export {default as backspace} from './backspace'
 export {default as insertNewline} from './insertNewline'
 // use to insert video and image

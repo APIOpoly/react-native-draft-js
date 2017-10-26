@@ -75,3 +75,7 @@ UIColor* colorFromColor(UIColor* inColor) {
 NSDictionary* dictionaryFromDictionary(NSDictionary* inDict) {
   return [inDict isKindOfClass:[NSDictionary class]] ? inDict : nil;
 }
+
+bool boolFromNSNumber(NSNumber* inNumber) {
+  return [inNumber isKindOfClass:[NSNumber class]] || [inNumber isKindOfClass:[NSString class]] ? [inNumber boolValue] : NO;
+}

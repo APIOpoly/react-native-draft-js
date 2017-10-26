@@ -9,6 +9,7 @@
 #import <React/RCTShadowView.h>
 #import <React/RCTTextDecorationLineType.h>
 #import "RNDJContentModel.h"
+#import "RNDJSelectionModel.h"
 
 typedef NS_ENUM(NSInteger, RCTSizeComparison)
 {
@@ -24,10 +25,12 @@ extern NSString *const RCTReactTagAttributeName;
 @interface RNTShadowDraftJSEditor : RCTShadowView
 {
   RNDJContentModel* contentModel;
+  RNDJSelectionModel* selectionModel;
   NSDictionary* _content;
 }
 
 @property (nonatomic, copy) NSDictionary *content;
+@property (nonatomic, copy) NSDictionary *selection;
 @property (nonatomic, copy) NSDictionary *blockFontTypes;
 @property (nonatomic, copy) NSDictionary *inlineStyleFontTypes;
 
@@ -51,6 +54,9 @@ extern NSString *const RCTReactTagAttributeName;
 @property (nonatomic, assign) BOOL selectable;
 @property (nonatomic, assign) CGFloat fontSizeMultiplier;
 @property (nonatomic, assign) BOOL allowFontScaling;
+
+@property (nonatomic, copy) NSString* selectionKey;
+@property (nonatomic, assign) NSUInteger selectionOffset;
 
 - (void)recomputeText;
 

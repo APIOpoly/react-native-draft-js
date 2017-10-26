@@ -55,15 +55,21 @@ RCT_EXPORT_MODULE()
 
 #pragma mark - View properties
 
-RCT_EXPORT_VIEW_PROPERTY(onKeysPressed, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onBackspacePressed, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onNewlinePressed, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onInsertTextRequest, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onBackspaceRequest, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onNewlineRequest, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onFocusChanged, RCTDirectEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onSelectionChangeRequest, RCTDirectEventBlock)
+
+RCT_EXPORT_VIEW_PROPERTY(selectionColor, UIColor)
+RCT_EXPORT_VIEW_PROPERTY(selectionOpacity, CGFloat)
 
 #pragma mark - Shadow properties
 
 RCT_EXPORT_SHADOW_PROPERTY(content, NSDictionary)
 RCT_EXPORT_SHADOW_PROPERTY(blockFontTypes, NSDictionary)
 RCT_EXPORT_SHADOW_PROPERTY(inlineStyleFontTypes, NSDictionary)
+RCT_EXPORT_SHADOW_PROPERTY(selection, NSDictionary)
 
 RCT_EXPORT_SHADOW_PROPERTY(fontFamily, NSString)
 RCT_EXPORT_SHADOW_PROPERTY(fontSize, CGFloat)

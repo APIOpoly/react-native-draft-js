@@ -15,8 +15,6 @@
 
 #import "RNTShadowDraftJSEditor.h"
 
-#import <NSLogger/NSLogger.h>
-
 static void collectNonTextDescendants(RNTDraftJSEditor *view, NSMutableArray *nonTextDescendants)
 {
   for (UIView *child in view.reactSubviews) {
@@ -159,11 +157,18 @@ static void collectNonTextDescendants(RNTDraftJSEditor *view, NSMutableArray *no
       }
     }];
   }];
+
+  CGFloat selectionOpacity = isnan(_selectionOpacity) ? 0.25 : _selectionOpacity;
+
+  UIColor* selectionColor = [UIColor colorWithWhite:0 alpha:selectionOpacity];
+  if (_selectionColor) {
+    selectionColor = [_selectionColor colorWithAlphaComponent:CGColorGetAlpha(_selectionColor.CGColor) * selectionOpacity];
+  }
   
   if (highlightPath) {
     if (!_highlightLayer) {
       _highlightLayer = [CAShapeLayer layer];
-      _highlightLayer.fillColor = [UIColor colorWithWhite:0 alpha:0.25].CGColor;
+      _highlightLayer.fillColor = selectionColor.CGColor;
       [self.layer addSublayer:_highlightLayer];
     }
     _highlightLayer.position = (CGPoint){_contentInset.left, _contentInset.top};
@@ -289,21 +294,41 @@ static void collectNonTextDescendants(RNTDraftJSEditor *view, NSMutableArray *no
   return _textStorage.length > 0;
 }
 
+//@property (nonatomic, copy) RCTDirectEventBlock onInsertTextRequest;
+//@property (nonatomic, copy) RCTDirectEventBlock onBackspaceRequest;
+//@property (nonatomic, copy) RCTDirectEventBlock onNewlineRequest;
+
 - (void)insertText:(NSString *)text
 {
-  RCTDirectEventBlock onKeysPressed = self.onKeysPressed;
-  if (onKeysPressed)
-  {
-    onKeysPressed(@{@"text": @[text]});
+  RCTDirectEventBlock onInsertTextRequest = self.onInsertTextRequest;
+  RCTDirectEventBlock onNewlineRequest = self.onNewlineRequest;
+
+  NSArray* textComponents = [text componentsSeparatedByString:@"\n"];
+  NSUInteger numComponents = textComponents.count;
+  for (int i=0; i<numComponents; i++) {
+    NSString* textComponent = textComponents[i];
+    
+    if (textComponent.length > 0) {
+      if (onInsertTextRequest)
+      {
+        onInsertTextRequest(@{@"text": textComponent});
+      }
+    }
+    
+    if (i < numComponents-1) {
+      if (onNewlineRequest) {
+        onNewlineRequest(@{});
+      }
+    }
   }
 }
 
 - (void)deleteBackward
 {
-  RCTDirectEventBlock onBackspacePressed = self.onBackspacePressed;
-  if (onBackspacePressed)
+  RCTDirectEventBlock onBackspaceRequest = self.onBackspaceRequest;
+  if (onBackspaceRequest)
   {
-    onBackspacePressed(@{});
+    onBackspaceRequest(@{});
 	}
 }
 
