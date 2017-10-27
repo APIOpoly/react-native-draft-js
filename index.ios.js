@@ -22,6 +22,8 @@ import {
   insertTextAtPosition,
   backspace,
   insertNewline,
+  updateSelectionHasFocus,
+  updateSelectionAnchorAndFocus,
 } from './libs/draft-js'
 
 const DraftJSEditor = requireNativeComponent('RNTDraftJSEditor', null)
@@ -65,33 +67,49 @@ export default class RNDraftJs extends Component {
     this.onChange(insertNewline(this.state.editorState))
   }
 
-  _onFocusChanged = (event) => {
-    let { editorState } = this.state
-    let { hasFocus } = event
-
-    // Set hasFocus on editorState selectionState
-  }
-
   _onSelectionChangeRequest = (event) => {
-    let { startKey, startOffset, endKey, endOffset } = event
+    let { editorState } = this.state
+    let { hasFocus } = event.nativeEvent
 
-    // Set selection range on editorState selectionState
+    var currentState = editorState
+    var stateChanged = false
+    if (hasFocus != undefined) {
+      let newState = updateSelectionHasFocus(this.state.editorState, hasFocus)
+      if (newState) {
+        currentState = newState
+        stateChanged = true
+      }
+    }
+
+    let { startKey, startOffset, endKey, endOffset } = event.nativeEvent
+    if (startKey && endKey && startOffset != undefined && endOffset != undefined) {
+      let newState = updateSelectionAnchorAndFocus(this.state.editorState, startKey, startOffset, endKey, endOffset)
+      if (newState) {
+        currentState = newState
+        stateChanged = true
+      }
+    }
+
+    if (stateChanged) {
+      this.onChange(currentState)
+    }
   }
 
   render() {
     let { editorState } = this.state
 
-    let content = editorState.getCurrentContent()
-    let selection = editorState.getSelection()
-    let selectionState = {
-      hasFocus: selection.getHasFocus(),
-      startKey: selection.getStartKey(),
-      startOffset: selection.getStartOffset(),
-      endKey: selection.getEndKey(),
-      endOffset: selection.getEndOffset(),
+    let contentState = editorState.getCurrentContent()
+    let selectionState = editorState.getSelection()
+
+    let selection = {
+      hasFocus: selectionState.getHasFocus(),
+      startKey: selectionState.getStartKey(),
+      startOffset: selectionState.getStartOffset(),
+      endKey: selectionState.getEndKey(),
+      endOffset: selectionState.getEndOffset(),
     }
 
-    let rawContent = convertToRaw(content)
+    let content = convertToRaw(contentState)
 
     return (
       <View style={styles.container}>
@@ -106,7 +124,7 @@ export default class RNDraftJs extends Component {
           Cmd+D or shake for dev menu
         </Text>
         <DraftJSEditor 
-          content={rawContent}
+          content={content}
           style={styles.draftTest}
           blockFontTypes={blockFontTypes}
           inlineStyleFontTypes={inlineStyleFontTypes} 
@@ -115,7 +133,10 @@ export default class RNDraftJs extends Component {
           onNewlineRequest={this._onNewlineRequest}
           onFocusChanged={this._onFocusChanged}
           onSelectionChangeRequest={this._onSelectionChangeRequest}
-          selectionState={selectionState}>
+          selection={selection}
+          placeholderText="Enter text here"
+          selectionColor={'#000000'}
+          selectionOpacity={1}>
         </DraftJSEditor>
       </View>
     );
@@ -148,6 +169,9 @@ const blockFontTypes = {
 //    allowFontScaling: boolean
 //  },
   unstyled: { // No real need to use since values from styles are already used
+  },
+  placeholder: {
+    opacity: 0.5,
   },
   headerOne: {
     fontSize: 22

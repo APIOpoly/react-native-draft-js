@@ -58,7 +58,6 @@ RCT_EXPORT_MODULE()
 RCT_EXPORT_VIEW_PROPERTY(onInsertTextRequest, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onBackspaceRequest, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onNewlineRequest, RCTDirectEventBlock)
-RCT_EXPORT_VIEW_PROPERTY(onFocusChanged, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onSelectionChangeRequest, RCTDirectEventBlock)
 
 RCT_EXPORT_VIEW_PROPERTY(selectionColor, UIColor)
@@ -87,6 +86,8 @@ RCT_EXPORT_SHADOW_PROPERTY(textDecorationColor, UIColor)
 RCT_EXPORT_SHADOW_PROPERTY(textShadowOffset, CGSize)
 RCT_EXPORT_SHADOW_PROPERTY(textShadowRadius, CGFloat)
 RCT_EXPORT_SHADOW_PROPERTY(textShadowColor, UIColor)
+
+RCT_EXPORT_SHADOW_PROPERTY(placeholderText, NSString)
 
 RCT_EXPORT_SHADOW_PROPERTY(selectable, BOOL)
 RCT_EXPORT_SHADOW_PROPERTY(allowFontScaling, BOOL)

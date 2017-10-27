@@ -27,6 +27,10 @@ extern CGFloat const RCTTextAutoSizeWidthErrorMargin;
 extern CGFloat const RCTTextAutoSizeHeightErrorMargin;
 extern CGFloat const RCTTextAutoSizeGranularity;
 
+NSString *const RNDJSingleCursorPositionAttributeName = @"SingleCursorPositionAttributeName";
+NSString *const RNDJDraftJsIndexAttributeName = @"DraftJsIndexAttributeName";
+
+
 @interface NSString(DraftJsBlockTypesMap)
 
 - (NSString*) toJsStyleName;
@@ -116,14 +120,19 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
   
   NSTextStorage *textStorage = [self buildTextStorageForWidth:width widthMode:YGMeasureModeExactly];
   CGRect textFrame = [self calculateTextFrame:textStorage];
+  
+  NSString* lastBlockKey = ((RNDJBlockModel*) contentModel.blocks.lastObject).key;
+  NSUInteger lastBlockIndex = ((RNDJBlockModel*) contentModel.blocks.lastObject).text.length;
+  RNDJDraftJsIndex* lastIndex = lastBlockKey.length > 0 ? [[RNDJDraftJsIndex alloc] initWithKey:lastBlockKey offset:lastBlockIndex] : nil;
+  
   BOOL selectable = _selectable;
   [applierBlocks addObject:^(NSDictionary<NSNumber *, UIView *> *viewRegistry) {
     RNTDraftJSEditor *view = (RNTDraftJSEditor *)viewRegistry[self.reactTag];
     view.textFrame = textFrame;
     view.textStorage = textStorage;
     view.selectable = selectable;
-    view.selectionKey = _selectionKey;
-    view.selectionOffset = _selectionOffset;
+    view.hasFocus = selectionModel ? selectionModel.hasFocus : NO;
+    view.lastIndex = lastIndex;
   }];
   
   return parentProperties;
@@ -258,6 +267,9 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
   NSMutableSet* fullyHighlightedBlocks = [NSMutableSet new];
   
   BOOL isInHighlightedState = NO;
+  NSInteger singleSelectionIndex = -1;
+  
+  BOOL isEmpty = YES;
   for (RNDJBlockModel* block in contentModel.blocks) {
     if (!isInHighlightedState && [block.key isEqualToString:selectionModel.startKey]) {
       isInHighlightedState = YES;
@@ -266,107 +278,134 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
     } else if (isInHighlightedState) {
       [fullyHighlightedBlocks addObject:block.key];
     }
-  }
-
-  for (RNDJBlockModel* block in contentModel.blocks) {
-    RNDJStyle* blockStyle = rootStyle;
-
-    NSString* blockType = block.type;
-    if ([blockType isEqualToString:@"atomic"]) {
-      // Skip for now
-      continue;
+    
+    if ([block.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0 || [block.type isEqualToString:@"atomic"]) {
+      isEmpty = NO;
     }
-    
-    NSMutableAttributedString* blockAttributedString = [NSMutableAttributedString new];
-    
-    if (blockType) {
-      RNDJStyle* blockTypeStyle = [blockTypeStyles objectForKey:[blockType toJsStyleName]];
-      blockStyle = [blockStyle applyStyle:blockTypeStyle];
-    }
-
-    NSString* text = block.text;
-    NSUInteger startPosition = 0;
-    NSUInteger endPosition = 0;
-    
-    NSSet* previousInlineStyles = nil;
-    
-    CGFloat lastLineHeight = 0;
-
-    _selectionKey = nil;
-    
-    while (true) {
-      NSMutableSet* currentInlineStyles = [NSMutableSet new];
-      BOOL shouldUpdate = NO;
-      BOOL shouldBreak = NO;
-      BOOL shouldAppendLineBreak = NO;
-
-      if (endPosition >= text.length) {
-        if (startPosition != endPosition) {
-          shouldUpdate = YES;
-        }
-        shouldAppendLineBreak = YES;
-        shouldBreak = YES;
-      } else {
-        for (RNDJInlineStyleRangeModel* inlineStyleRange in block.inlineStyleRanges) {
-          if (inlineStyleRange.style && inlineStyleRange.offset <= endPosition && endPosition < (inlineStyleRange.offset + inlineStyleRange.length)) {
-            [currentInlineStyles addObject:inlineStyleRange.style];
-          }
-        }
-        
-        if (previousInlineStyles && ![currentInlineStyles isEqualToSet:previousInlineStyles]) {
-          shouldUpdate = YES;
-        }
-      }
-      
-      if (shouldUpdate) {
-        RNDJStyle* currentStyle = blockStyle;
-
-        NSString* substring = [text substringWithRange:NSMakeRange(startPosition, endPosition - startPosition)];
-        
-        for (NSString* inlineStyleKey in currentInlineStyles) {
-          currentStyle = [currentStyle applyStyle:[inlineStyles objectForKey:inlineStyleKey]];
-        }
-        
-        if (currentStyle.lineHeight) {
-          if ([currentStyle.allowFontScaling boolValue]) {
-            lastLineHeight = [currentStyle.lineHeight floatValue] * _fontSizeMultiplier;
-          } else {
-            lastLineHeight = [currentStyle.lineHeight floatValue];
-          }
-        }
-        
-        [self _appendText:substring toAttributedString:blockAttributedString withStyle:currentStyle shouldAppendLineBreak:shouldAppendLineBreak];
-        startPosition = endPosition;
-      }
-      
-      if (shouldBreak) {
-        break;
-      }
-      
-      endPosition += 1;
-    }
-    
-    if (selectionModel.hasFocus) {
-      if ([selectionModel.startKey isEqualToString:selectionModel.startKey] && [selectionModel.startKey isEqualToString:selectionModel.endKey] && selectionModel.startOffset == selectionModel.endOffset) {
-        _selectionKey = selectionModel.startKey;
-        _selectionOffset = selectionModel.startOffset;
-      } else {
-        if (blockAttributedString.length > 0) {
-          if ([fullyHighlightedBlocks containsObject:block.key]) {
-            [blockAttributedString addAttribute:RCTIsHighlightedAttributeName value:@YES range:NSMakeRange(0, blockAttributedString.length)];
-          } else if ([block.key isEqualToString:selectionModel.startKey] && selectionModel.startOffset < blockAttributedString.length - 1) {
-            [blockAttributedString addAttribute:RCTIsHighlightedAttributeName value:@YES range:NSMakeRange(selectionModel.startOffset, blockAttributedString.length - selectionModel.startOffset)];
-          } else if ([block.key isEqualToString:selectionModel.endKey]) {
-            NSUInteger endOffset = selectionModel.endOffset < blockAttributedString.length ? selectionModel.endOffset : blockAttributedString.length;
-            [blockAttributedString addAttribute:RCTIsHighlightedAttributeName value:@YES range:NSMakeRange(0, endOffset)];
-          }
-        }
-      }
-    }
-
-    [contentAttributedString appendAttributedString:blockAttributedString];
   }
   
+  if (isEmpty) {
+    if (selectionModel.hasFocus) {
+      singleSelectionIndex = 0;
+    } else {
+      RNDJStyle* placeholderStyle = rootStyle;
+      placeholderStyle = [placeholderStyle applyStyle:[blockTypeStyles objectForKey:@"placeholder"]];
+      
+      NSString *placeholderText = _placeholderText ? _placeholderText : @"";
+      [self _appendText:placeholderText toAttributedString:contentAttributedString withStyle:placeholderStyle shouldAppendLineBreak:NO];
+    }
+  } else {
+    for (RNDJBlockModel* block in contentModel.blocks) {
+      RNDJStyle* blockStyle = rootStyle;
+      
+      NSString* blockType = block.type;
+      if ([blockType isEqualToString:@"atomic"]) {
+        // Skip for now
+        continue;
+      }
+      
+      NSMutableAttributedString* blockAttributedString = [NSMutableAttributedString new];
+      
+      if (blockType) {
+        RNDJStyle* blockTypeStyle = [blockTypeStyles objectForKey:[blockType toJsStyleName]];
+        blockStyle = [blockStyle applyStyle:blockTypeStyle];
+      }
+      
+      NSString* text = block.text;
+      NSUInteger startPosition = 0;
+      NSUInteger endPosition = 0;
+      
+      NSSet* previousInlineStyles = nil;
+      
+      CGFloat lastLineHeight = 0;
+      
+      while (true) {
+        NSMutableSet* currentInlineStyles = [NSMutableSet new];
+        BOOL shouldUpdate = NO;
+        BOOL shouldBreak = NO;
+        BOOL shouldAppendLineBreak = NO;
+        
+        if (endPosition >= text.length) {
+          if (startPosition != endPosition) {
+            shouldUpdate = YES;
+          }
+          shouldAppendLineBreak = YES;
+          shouldBreak = YES;
+        } else {
+          for (RNDJInlineStyleRangeModel* inlineStyleRange in block.inlineStyleRanges) {
+            if (inlineStyleRange.style && inlineStyleRange.offset <= endPosition && endPosition < (inlineStyleRange.offset + inlineStyleRange.length)) {
+              [currentInlineStyles addObject:inlineStyleRange.style];
+            }
+          }
+          
+          if (previousInlineStyles && ![currentInlineStyles isEqualToSet:previousInlineStyles]) {
+            shouldUpdate = YES;
+          }
+        }
+        
+        if (shouldUpdate) {
+          RNDJStyle* currentStyle = blockStyle;
+          
+          NSString* substring = [text substringWithRange:NSMakeRange(startPosition, endPosition - startPosition)];
+          
+          for (NSString* inlineStyleKey in currentInlineStyles) {
+            currentStyle = [currentStyle applyStyle:[inlineStyles objectForKey:inlineStyleKey]];
+          }
+          
+          if (currentStyle.lineHeight) {
+            if ([currentStyle.allowFontScaling boolValue]) {
+              lastLineHeight = [currentStyle.lineHeight floatValue] * _fontSizeMultiplier;
+            } else {
+              lastLineHeight = [currentStyle.lineHeight floatValue];
+            }
+          }
+          
+          [self _appendText:substring toAttributedString:blockAttributedString withStyle:currentStyle shouldAppendLineBreak:shouldAppendLineBreak];
+          startPosition = endPosition;
+        }
+        
+        if (shouldBreak) {
+          break;
+        }
+        
+        endPosition += 1;
+      }
+      
+      if (selectionModel.hasFocus) {
+        if ([selectionModel.startKey isEqualToString:selectionModel.startKey] && [selectionModel.startKey isEqualToString:selectionModel.endKey] && selectionModel.startOffset == selectionModel.endOffset) {
+          singleSelectionIndex = contentAttributedString.length + selectionModel.startOffset;
+        } else {
+          if (blockAttributedString.length > 0) {
+            if ([fullyHighlightedBlocks containsObject:block.key]) {
+              [blockAttributedString addAttribute:RCTIsHighlightedAttributeName value:@YES range:NSMakeRange(0, blockAttributedString.length)];
+            } else if ([block.key isEqualToString:selectionModel.startKey] && selectionModel.startOffset < blockAttributedString.length - 1) {
+              [blockAttributedString addAttribute:RCTIsHighlightedAttributeName value:@YES range:NSMakeRange(selectionModel.startOffset, blockAttributedString.length - selectionModel.startOffset)];
+            } else if ([block.key isEqualToString:selectionModel.endKey]) {
+              NSUInteger endOffset = selectionModel.endOffset < blockAttributedString.length ? selectionModel.endOffset : blockAttributedString.length;
+              [blockAttributedString addAttribute:RCTIsHighlightedAttributeName value:@YES range:NSMakeRange(0, endOffset)];
+            }
+          }
+        }
+      }
+      
+      [contentAttributedString appendAttributedString:blockAttributedString];
+      
+      for (NSUInteger i = 0; i<contentAttributedString.length; i++) {
+        [contentAttributedString addAttribute:RNDJDraftJsIndexAttributeName
+                                        value:[[RNDJDraftJsIndex alloc] initWithKey:block.key offset:MIN(i, block.text.length)]
+                                        range:NSMakeRange(i, 1)];
+      }
+    }
+  }
+  
+  if (singleSelectionIndex > -1) {
+    if (singleSelectionIndex == contentAttributedString.length) {
+      [contentAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
+    }
+    
+    [contentAttributedString addAttribute:RNDJSingleCursorPositionAttributeName value:@YES range:NSMakeRange(singleSelectionIndex, 1)];
+  }
+
   // create a non-mutable attributedString for use by the Text system which avoids copies down the line
   _cachedAttributedString = [[NSAttributedString alloc] initWithAttributedString:contentAttributedString];
   YGNodeMarkDirty(self.cssNode);
@@ -436,7 +475,7 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
   }
   
   text = text.length == 0 ? @" " : text;
-  text = shouldAppendLineBreak ? [NSString stringWithFormat:@"%@\n", text] : text;
+  text = shouldAppendLineBreak ? [NSString stringWithFormat:@"%@ \n", text] : text;
 
   NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithString:text attributes:attributes];
 

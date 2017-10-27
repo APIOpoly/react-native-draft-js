@@ -23,6 +23,9 @@ export {default as customKeyCommandInsertNewline} from './customKeyCommandInsert
 export {default as insertTextAtPosition} from './insertTextAtPosition'
 export {default as backspace} from './backspace'
 export {default as insertNewline} from './insertNewline'
+export {default as updateSelectionHasFocus} from './updateSelectionHasFocus'
+export {default as updateSelectionAnchorAndFocus} from './updateSelectionAnchorAndFocus'
+
 // use to insert video and image
 export {default as insertAtomicBlock} from './insertAtomicBlock'
 // use to toggle between header-one and unstyled

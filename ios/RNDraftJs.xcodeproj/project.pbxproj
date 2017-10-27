@@ -43,6 +43,7 @@
 		9161EFE61FA07F2F001E3EE8 /* RNDJEntityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFE51FA07F2F001E3EE8 /* RNDJEntityModel.m */; };
 		9161EFE91FA07F4B001E3EE8 /* RNDJEntityRangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFE81FA07F4B001E3EE8 /* RNDJEntityRangeModel.m */; };
 		9161EFEC1FA07F62001E3EE8 /* RNDJInlineStyleRangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9161EFEB1FA07F61001E3EE8 /* RNDJInlineStyleRangeModel.m */; };
+		91973C181FA390DF006DE932 /* RNDJDraftJsIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 91973C171FA390DF006DE932 /* RNDJDraftJsIndex.m */; };
 		91CBEBB81F9DE2B60038C517 /* RNTDraftJSEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBEBB31F9DE1FD0038C517 /* RNTDraftJSEditor.m */; };
 		91CBEBB91F9DE2BA0038C517 /* RNTDraftJSEditorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBEBB61F9DE1FD0038C517 /* RNTDraftJSEditorManager.m */; };
 		91CBEBBA1F9DE2BE0038C517 /* RNTShadowDraftJSEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CBEBB21F9DE1FD0038C517 /* RNTShadowDraftJSEditor.m */; };
@@ -286,6 +287,8 @@
 		9161EFE81FA07F4B001E3EE8 /* RNDJEntityRangeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJEntityRangeModel.m; sourceTree = "<group>"; };
 		9161EFEA1FA07F61001E3EE8 /* RNDJInlineStyleRangeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJInlineStyleRangeModel.h; sourceTree = "<group>"; };
 		9161EFEB1FA07F61001E3EE8 /* RNDJInlineStyleRangeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJInlineStyleRangeModel.m; sourceTree = "<group>"; };
+		91973C161FA390DF006DE932 /* RNDJDraftJsIndex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNDJDraftJsIndex.h; sourceTree = "<group>"; };
+		91973C171FA390DF006DE932 /* RNDJDraftJsIndex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNDJDraftJsIndex.m; sourceTree = "<group>"; };
 		91CBEBB21F9DE1FD0038C517 /* RNTShadowDraftJSEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTShadowDraftJSEditor.m; sourceTree = "<group>"; };
 		91CBEBB31F9DE1FD0038C517 /* RNTDraftJSEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTDraftJSEditor.m; sourceTree = "<group>"; };
 		91CBEBB41F9DE1FD0038C517 /* RNTDraftJSEditorManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTDraftJSEditorManager.h; sourceTree = "<group>"; };
@@ -534,6 +537,8 @@
 				9151D00A1FA1E502007E7F52 /* RNDJStyle.h */,
 				9151D00B1FA1E502007E7F52 /* RNDJStyle.m */,
 				9151D00D1FA1E6B5007E7F52 /* RNDJUtil.h */,
+				91973C161FA390DF006DE932 /* RNDJDraftJsIndex.h */,
+				91973C171FA390DF006DE932 /* RNDJDraftJsIndex.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1074,6 +1079,7 @@
 				91F72F421F9FCB1D00522C8D /* RCTShadowView+DraftJSDirty.m in Sources */,
 				9161EFE31FA07F1A001E3EE8 /* RNDJBlockModel.m in Sources */,
 				91CBEBBA1F9DE2BE0038C517 /* RNTShadowDraftJSEditor.m in Sources */,
+				91973C181FA390DF006DE932 /* RNDJDraftJsIndex.m in Sources */,
 				91CBEBB91F9DE2BA0038C517 /* RNTDraftJSEditorManager.m in Sources */,
 				9161EFE61FA07F2F001E3EE8 /* RNDJEntityModel.m in Sources */,
 				91CBEBB81F9DE2B60038C517 /* RNTDraftJSEditor.m in Sources */,

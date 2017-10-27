@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <React/RCTComponent.h>
+#import "RNDJDraftJsIndex.h"
 
 @interface RNTDraftJSEditor : UIView<UIKeyInput>
 
@@ -19,21 +20,17 @@
 @property (nonatomic, copy) RCTDirectEventBlock onInsertTextRequest;
 @property (nonatomic, copy) RCTDirectEventBlock onBackspaceRequest;
 @property (nonatomic, copy) RCTDirectEventBlock onNewlineRequest;
-@property (nonatomic, copy) RCTDirectEventBlock onFocusChanged;
 @property (nonatomic, copy) RCTDirectEventBlock onSelectionChangeRequest;
 
 @property (nonatomic, copy) UIColor* selectionColor;
 @property (nonatomic, assign) CGFloat selectionOpacity;
 
-@property (nonatomic, copy) NSString* selectionKey;
-@property (nonatomic, assign) NSUInteger selectionOffset;
+@property (nonatomic, assign) BOOL hasFocus;
+@property (nonatomic, strong) RNDJDraftJsIndex* lastIndex;
 
 @property(nonatomic) UITextAutocapitalizationType autocapitalizationType; // default is UITextAutocapitalizationTypeSentences
 @property(nonatomic) UITextAutocorrectionType autocorrectionType;         // default is UITextAutocorrectionTypeDefault
 @property(nonatomic) UITextSpellCheckingType spellCheckingType NS_AVAILABLE_IOS(5_0); // default is UITextSpellCheckingTypeDefault;
-@property(nonatomic) UITextSmartQuotesType smartQuotesType NS_AVAILABLE_IOS(11_0); // default is UITextSmartQuotesTypeDefault;
-@property(nonatomic) UITextSmartDashesType smartDashesType NS_AVAILABLE_IOS(11_0); // default is UITextSmartDashesTypeDefault;
-@property(nonatomic) UITextSmartInsertDeleteType smartInsertDeleteType NS_AVAILABLE_IOS(11_0); // default is UITextSmartInsertDeleteTypeDefault;
 @property(nonatomic) UIKeyboardType keyboardType;                         // default is UIKeyboardTypeDefault
 @property(nonatomic) UIKeyboardAppearance keyboardAppearance;             // default is UIKeyboardAppearanceDefault
 @property(nonatomic) UIReturnKeyType returnKeyType;                       // default is UIReturnKeyDefault (See note under UIReturnKeyType enum)
